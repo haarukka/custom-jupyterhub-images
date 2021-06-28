@@ -1,6 +1,6 @@
 FROM s2i-generic-data-science-notebook:v0.0.2
 
-RUN touch iwashere && pwd && ls -la
+USER 0
 
 RUN \
 echo -e "[global]\n\
@@ -12,3 +12,5 @@ ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 ENV PARALLEL = 'False'
 RUN python3 -m pip install imutils
+
+USER 1000
